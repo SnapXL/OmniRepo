@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>OmniRepo.Domain</RootNamespace>
+    <AssemblyName>OmniRepo.Domain</AssemblyName>
+  </PropertyGroup>
+  
+</Project>
