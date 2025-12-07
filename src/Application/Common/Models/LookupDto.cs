@@ -8,12 +8,21 @@ public class LookupDto
 
     public string? Title { get; init; }
 
-    private class Mapping : Profile
+    public static LookupDto FromTodoList(TodoList todoList)
     {
-        public Mapping()
+        return new LookupDto
         {
-            CreateMap<TodoList, LookupDto>();
-            CreateMap<TodoItem, LookupDto>();
-        }
+            Id = todoList.Id,
+            Title = todoList.Title
+        };
+    }
+
+    public static LookupDto FromTodoItem(TodoItem todoItem)
+    {
+        return new LookupDto
+        {
+            Id = todoItem.Id,
+            Title = todoItem.Title
+        };
     }
 }

@@ -16,4 +16,12 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TodoItems\Commands\" />
+    <Folder Include="TodoItems\Queries\" />
+    <Folder Include="TodoLists\Commands\" />
+    <Folder Include="TodoLists\Queries\" />
+    <Folder Include="WeatherForecasts\Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,5 @@
-﻿using MediatR;
+﻿namespace OmniRepo.Domain.Common;
 
-namespace OmniRepo.Domain.Common;
-
-public abstract class BaseEvent : INotification
+public abstract class BaseEvent : IDomainEvent
 {
 }

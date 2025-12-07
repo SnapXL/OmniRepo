@@ -1,4 +1,5 @@
-﻿using ValidationException = OmniRepo.Application.Common.Exceptions.ValidationException;
+﻿using FluentValidation;
+using ValidationException = OmniRepo.Application.Common.Exceptions.ValidationException;
 
 namespace OmniRepo.Application.Common.Behaviours;
 
@@ -12,7 +13,7 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
         _validators = validators;
     }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, Func<Task<TResponse>> next, CancellationToken cancellationToken)
     {
         if (_validators.Any())
         {

@@ -27,6 +27,7 @@ public static class WebApplicationExtensions
         {
             if (Activator.CreateInstance(type) is EndpointGroupBase instance)
             {
+
                 instance.Map(app.MapGroup(instance));
             }
         }

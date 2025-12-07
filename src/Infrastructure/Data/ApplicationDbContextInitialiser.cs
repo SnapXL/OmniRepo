@@ -36,19 +36,21 @@ public class ApplicationDbContextInitialiser
         _roleManager = roleManager;
     }
 
-    public async Task InitialiseAsync()
+    public Task InitialiseAsync()
     {
         try
         {
             // See https://jasontaylor.dev/ef-core-database-initialisation-strategies
-            await _context.Database.EnsureDeletedAsync();
-            await _context.Database.EnsureCreatedAsync();
+            // await _context.Database.EnsureDeletedAsync();
+            // await _context.Database.EnsureCreatedAsync();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "An error occurred while initialising the database.");
             throw;
         }
+
+        return Task.CompletedTask;
     }
 
     public async Task SeedAsync()
@@ -102,7 +104,7 @@ public class ApplicationDbContextInitialiser
                 }
             });
 
-            await _context.SaveChangesAsync();
+            // await _context.SaveChangesAsync();
         }
     }
 }

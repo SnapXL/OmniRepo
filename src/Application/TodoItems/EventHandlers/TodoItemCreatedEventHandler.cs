@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace OmniRepo.Application.TodoItems.EventHandlers;
 
-public class TodoItemCreatedEventHandler : INotificationHandler<TodoItemCreatedEvent>
+public class TodoItemCreatedEventHandler
 {
     private readonly ILogger<TodoItemCreatedEventHandler> _logger;
 
@@ -12,10 +12,9 @@ public class TodoItemCreatedEventHandler : INotificationHandler<TodoItemCreatedE
         _logger = logger;
     }
 
-    public Task Handle(TodoItemCreatedEvent notification, CancellationToken cancellationToken)
+    public Task Handle(TodoItemCreatedEvent notification, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("OmniRepo Domain Event: {DomainEvent}", notification.GetType().Name);
-
         return Task.CompletedTask;
     }
 }

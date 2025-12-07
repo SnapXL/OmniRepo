@@ -1,23 +1,22 @@
-﻿using System.Reflection;
+﻿// using OmniRepo.Application.Common.Interfaces;
+
 using OmniRepo.Application.Common.Interfaces;
 using OmniRepo.Domain.Entities;
-using OmniRepo.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+// using OmniRepo.Infrastructure.Identity;
 
 namespace OmniRepo.Infrastructure.Data;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
+
+public class ApplicationDbContext : IApplicationDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    private readonly List<TodoList> _todoLists = new();
+    private readonly List<TodoItem> _todoItems = new();
 
-    public DbSet<TodoList> TodoLists => Set<TodoList>();
+    public List<TodoList> TodoLists => _todoLists;
+    public List<TodoItem> TodoItems => _todoItems;
 
-    public DbSet<TodoItem> TodoItems => Set<TodoItem>();
-
-    protected override void OnModelCreating(ModelBuilder builder)
+    public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        return Task.FromResult(0);
     }
 }

@@ -4,9 +4,9 @@ namespace OmniRepo.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {
-    DbSet<TodoList> TodoLists { get; }
+    List<TodoList> TodoLists { get; }
 
-    DbSet<TodoItem> TodoItems { get; }
+    List<TodoItem> TodoItems { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
