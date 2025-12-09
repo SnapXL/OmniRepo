@@ -41,6 +41,7 @@ jobs:
       - name: Build Docker Container (Alpine)
         uses: docker/build-push-action@v6
         with:
+          context: .
           # push: true No binary releases yet
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -56,6 +57,7 @@ jobs:
       - name: Build Docker Container (Fedora)
         uses: docker/build-push-action@v6
         with:
+          context: .
           # push: true No binary releases yet
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
