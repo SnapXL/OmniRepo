@@ -48,11 +48,11 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: runner-alpine
+          # I swear Microsoft's ARMHF .NET builds are broken...
           platforms: |
             linux/amd64,
             linux/arm64,
             linux/arm/v7,
-            linux/arm/v6,
             linux/riscv64
       - name: Build Docker Container (Fedora)
         uses: docker/build-push-action@v6
