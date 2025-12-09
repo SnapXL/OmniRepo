@@ -76,6 +76,7 @@ RUN cd src/Web && dotnet publish -c Release \
     -p:SelfContained=true \
     # -p:PublishReadyToRun=true \ # Not supported on ppc64le / s390x yet
     -p:InvariantGlobalization=true \
+    -p:GitVersionTargetFramework=$(dotnet --version) \
     --use-current-runtime \
     --output ../../artifacts
 
