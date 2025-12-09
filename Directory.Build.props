@@ -6,6 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GitVersionTargetFramework>$(TargetFramework)</GitVersionTargetFramework>
     <Nullable>enable</Nullable>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <PropertyGroup Condition="!Exists('.git')">
+    <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
+    <DisableGitVersionTask>true</DisableGitVersionTask>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="GitVersion.MsBuild">
