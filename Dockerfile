@@ -1,14 +1,11 @@
 # syntax=docker/dockerfile:1.6
 
-ARG TARGETARCH
-ARG TARGETPLATFORM
-
 # ----------------------
 # BUILD STAGE
 # ----------------------
 
 # Default build for Alpine-supported architectures
-FROM --platform=$TARGETPLATFORM alpine:edge AS build-alpine
+FROM alpine:edge AS build-alpine
 WORKDIR /app
 RUN arch="$(apk --print-arch)" \
     && if [ "$arch" = "riscv64" ]; then \
@@ -52,7 +49,7 @@ RUN arch="$(apk --print-arch)" \
 
 
 # Build for ppc64le / s390x (Fedora-based)
-FROM --platform=$TARGETPLATFORM quay.io/fedora/fedora-minimal:latest AS build-fedora
+FROM quay.io/fedora/fedora-minimal:latest AS build-fedora
 WORKDIR /app
 RUN arch="$(uname -m)" \
  && case "$arch" in \
@@ -93,7 +90,7 @@ FROM build-fedora AS build-s390x
 # ----------------------
 
 # Default runtime for Alpine-supported architectures
-FROM --platform=$TARGETPLATFORM alpine:edge AS runner-alpine
+FROM alpine:edge AS runner-alpine
 WORKDIR /app
 RUN apk add --no-cache tini libstdc++ libgcc openssl && \
     addgroup -S app && adduser -S app -G app && \
@@ -104,7 +101,7 @@ COPY --from=build-alpine --chown=root:root /app/artifacts/ .
 ENTRYPOINT ["tini", "--", "./OmniRepo.Web"]
 
 # Runtime for ppc64le / s390x
-FROM --platform=$TARGETPLATFORM quay.io/fedora/fedora-minimal:latest AS runner-fedora
+FROM quay.io/fedora/fedora-minimal:latest AS runner-fedora
 WORKDIR /app
 RUN useradd -r -m app
 RUN dnf install -y --setopt=install_weak_deps=False tini-static
