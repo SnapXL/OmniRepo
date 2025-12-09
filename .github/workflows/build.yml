@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release src/Web/Web.csproj
   
-  docker:
+  docker-amd64:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -38,32 +38,101 @@ jobs:
       - name: Setup Docker Build Environment
         id: meta
         uses: ./.github/actions/setup-docker-build-env
-      - name: Build Docker Container (Alpine)
+      - name: Build Docker Container (Alpine - AMD64)
         uses: docker/build-push-action@v6
         with:
           context: .
-          # push: true No binary releases yet
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: runner-alpine
-          # I swear Microsoft's ARMHF .NET builds are broken...
-          platforms: |
-            linux/amd64,
-            linux/arm64,
-            linux/arm/v7,
-            linux/riscv64
-      - name: Build Docker Container (Fedora)
+          platforms: linux/amd64
+
+  docker-arm64:
+    runs-on: ubuntu-24.04-arm
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup Docker Build Environment
+        id: meta
+        uses: ./.github/actions/setup-docker-build-env
+      - name: Build Docker Container (Alpine - ARM64)
         uses: docker/build-push-action@v6
         with:
           context: .
-          # push: true No binary releases yet
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: runner-alpine
+          platforms: linux/arm64
+
+  docker-riscv64:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup Docker Build Environment
+        id: meta
+        uses: ./.github/actions/setup-docker-build-env
+      - name: Build Docker Container (Alpine - RISCV64)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: runner-alpine
+          platforms: linux/riscv64
+
+  docker-ppc64le:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup Docker Build Environment
+        id: meta
+        uses: ./.github/actions/setup-docker-build-env
+      - name: Build Docker Container (Fedora - PPC64LE)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: runner-fedora
-          platforms: |
-            linux/ppc64le,
-            linux/s390x
+          platforms: linux/ppc64le
+
+  docker-s390x:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup Docker Build Environment
+        id: meta
+        uses: ./.github/actions/setup-docker-build-env
+      - name: Build Docker Container (Fedora - S390X)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: runner-fedora
+          platforms: linux/s390x
