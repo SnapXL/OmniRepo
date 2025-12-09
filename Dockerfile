@@ -52,7 +52,7 @@ RUN arch="$(apk --print-arch)" \
 
 
 # Build for ppc64le / s390x (Fedora-based)
-FROM --platform=$TARGETPLATFORM fedora-minimal:latest AS build-fedora
+FROM --platform=$TARGETPLATFORM quay.io/fedora/fedora-minimal:latest AS build-fedora
 WORKDIR /app
 RUN arch="$(uname -m)" \
  && case "$arch" in \
@@ -104,7 +104,7 @@ COPY --from=build-alpine --chown=root:root /app/artifacts/ .
 ENTRYPOINT ["tini", "--", "./OmniRepo.Web"]
 
 # Runtime for ppc64le / s390x
-FROM --platform=$TARGETPLATFORM fedora-minimal:latest AS runner-fedora
+FROM --platform=$TARGETPLATFORM quay.io/fedora/fedora-minimal:latest AS runner-fedora
 WORKDIR /app
 RUN useradd -r -m app
 RUN dnf install -y --setopt=install_weak_deps=False tini-static
