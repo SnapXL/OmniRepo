@@ -17,7 +17,7 @@ RUN arch="$(apk --print-arch)" \
          rm /tmp/dotnet.tar.gz; \
          ln -sf /usr/lib/dotnet/dotnet /usr/bin/dotnet; \
          ln -sf /usr/lib/dotnet/dnx /usr/bin/dnx 2>/dev/null || true; \
-         apk add --no-cache openssl libstdc++ libgcc icu-libs git; \
+         apk add --no-cache openssl libstdc++ libgcc icu-libs; \
     elif [ "$arch" = "armhf" ]; then \
         apk add --no-cache bash openssl libstdc++ libgcc icu-libs git; \
         wget -qO /tmp/dotnet-install.sh https://dot.net/v1/dotnet-install.sh; \
@@ -36,10 +36,9 @@ RUN arch="$(apk --print-arch)" \
  && if [ "$arch" = "riscv64" ]; then \
         rm -rf ../../.git ; \
     else \
-        r2r="-p:PublishReadyToRun=true" ; \
+        r2r="-p:PublishReadyToRun=true -p:PublishSingleFile=true" ; \
     fi \
  && dotnet publish -c Release \
-        -p:PublishSingleFile=true \
         -p:SelfContained=true \
         $r2r \
         -p:InvariantGlobalization=true \
