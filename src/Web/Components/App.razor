@@ -12,14 +12,18 @@
     <link rel="stylesheet" href="bootstrap.min.css"/>
     <link rel="stylesheet" href="app.css"/>
     <link rel="icon" href="favicon.ico"/>
+    <script src="_framework/blazor.server.js"></script>
+
     <HeadOutlet/>
+    <!-- TELEMETRY: Session Replay -->
+    <script
+        src="https://js.sentry-cdn.com/e1dd4c0a1951ec66f8c93acbeb377918.min.js"
+        crossorigin="anonymous"
+    ></script>
 </head>
 
 <body>
 <Routes/>
-<script src="_framework/blazor.web.js"></script>
-<script src="_framework/blazor.server.js"></script>
-
 </body>
 
 </html>

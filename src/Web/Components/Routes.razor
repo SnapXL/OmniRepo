@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using OmniRepo.Web.Components.Layout
-<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(_Imports).Assembly }">
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(_Imports).Assembly }" NotFoundPage="@typeof(OmniRepo.Web.Components.Pages.FourOhFour)">
     <Found Context="routeData">
         @* <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"> *@
         @*     <NotAuthorized> *@

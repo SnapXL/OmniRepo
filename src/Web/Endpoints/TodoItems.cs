@@ -1,7 +1,4 @@
-﻿using OmniRepo.Application.Common.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace OmniRepo.Web.Endpoints;
+﻿namespace OmniRepo.Web.Endpoints;
 
 public class TodoItems : EndpointGroupBase
 {

@@ -1,10 +1,5 @@
-﻿using OmniRepo.Application.Common.Interfaces;
+﻿using Microsoft.Extensions.Hosting;
 using OmniRepo.Domain.Constants;
-using OmniRepo.Infrastructure.Data;
-using OmniRepo.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -40,8 +35,9 @@ public static class DependencyInjection
         //     .AddDefaultTokenProviders();
         builder.Services.AddSingleton(TimeProvider.System);
         // builder.Services.AddTransient<IIdentityService, IdentityService>();
-
+        builder.Services.AddHttpContextAccessor();
         builder.Services.AddAuthorization(options =>
-            options.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator)));
+            options.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator))
+        );
     }
 }

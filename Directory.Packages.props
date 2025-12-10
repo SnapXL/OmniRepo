@@ -3,14 +3,23 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <AspireVersion>10.0.0</AspireVersion>
-    <AspnetVersion>10.0.0</AspnetVersion>
-    <MSExtensionsVersion>10.0.0</MSExtensionsVersion>
+    <AspnetVersion>10.0.1</AspnetVersion>
+    <MSExtensionsVersion>10.0.1</MSExtensionsVersion>
+    <SentryVersion>6.0.0-rc.2-prerelease</SentryVersion>
+    <OpenTelemetryVersion>1.14.0</OpenTelemetryVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="SharpCompress" Version="0.42.0" />
-    <PackageVersion Include="Sentry.Profiling" Version="5.16.2" />
-    <PackageVersion Include="Sentry.AspNetCore" Version="5.16.2" />
-    <PackageVersion Include="Sentry.Serilog" Version="5.16.2" />
+    <PackageVersion Include="BrycensRanch.Aptabase.Core" Version="0.2.5" />
+
+    <PackageVersion Include="Sentry.Profiling" Version="$(SentryVersion)" />
+    <PackageVersion Include="Sentry.AspNetCore" Version="$(SentryVersion)" />
+    <PackageVersion Include="Sentry.Serilog" Version="$(SentryVersion)" />
+    <PackageVersion Include="Sentry.OpenTelemetry" Version="$(SentryVersion)" />
+    <PackageVersion Include="Sentry.AspNetCore.Blazor.WebAssembly" Version="$(SentryVersion)" />
+    <PackageVersion Include="OpenTelemetry" Version="$(OpenTelemetryVersion)" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="$(OpenTelemetryVersion)" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="$(OpenTelemetryVersion)" />
     <PackageVersion Include="Dapper" Version="2.1.66" />
     <PackageVersion Include="Dapper.AOT" Version="1.0.48" />
     <PackageVersion Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
