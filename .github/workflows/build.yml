@@ -24,8 +24,16 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           global-json-file: 'global.json'
+      - name: Setup Sentry CLI
+        uses: matbour/setup-sentry-cli@v1
+        with:
+          token: ${{ SECRETS.SENTRY_TOKEN }}
+          organization: github-student-developer
+          project: omnirepo
       - name: Build
         run: dotnet build --configuration Release src/Web/Web.csproj
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
   
   docker-amd64:
     runs-on: ubuntu-latest

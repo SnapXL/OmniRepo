@@ -11,14 +11,14 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
-<PropertyGroup Condition="'$(Configuration)' == 'Release' AND ('$(env:SENTRY_TOKEN)' == '1' OR '$(env:SENTRY_CLI)' == '1')">
-  <SentryOrg>github-student-developer</SentryOrg>
-  <SentryProject>omnirepo</SentryProject>
-  <SentryUploadSymbols>true</SentryUploadSymbols>
-  <SentryUploadSources>true</SentryUploadSources>
-  <SentryCreateRelease>true</SentryCreateRelease>
-  <SentrySetCommits>true</SentrySetCommits>
-</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' AND ('$(env:SENTRY_TOKEN)' != '' OR '$(env:SENTRY_CLI)' == '1')">
+    <SentryOrg>github-student-developer</SentryOrg>
+    <SentryProject>omnirepo</SentryProject>
+    <SentryUploadSymbols>true</SentryUploadSymbols>
+    <SentryUploadSources>true</SentryUploadSources>
+    <SentryCreateRelease>true</SentryCreateRelease>
+    <SentrySetCommits>true</SentrySetCommits>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
