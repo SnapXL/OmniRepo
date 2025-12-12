@@ -9,7 +9,7 @@
     <OpenTelemetryVersion>1.14.0</OpenTelemetryVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="SharpCompress" Version="0.42.0" />
+    <PackageVersion Include="SharpCompress" Version="0.42.1" />
     <PackageVersion Include="BrycensRanch.Aptabase.Core" Version="0.2.5" />
 
     <PackageVersion Include="Sentry.Profiling" Version="$(SentryVersion)" />
@@ -32,7 +32,7 @@
     <PackageVersion Include="Microsoft.Data.Sqlite" Version="$(MSExtensionsVersion)" />
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="$(SQLitePCLRawVersion)" />
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
-    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
@@ -46,14 +46,14 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="$(MSExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(MSExtensionsVersion)" />
     <PackageVersion Include="FakeItEasy" Version="8.3.0" />
-    <PackageVersion Include="TUnit" Version="1.5.1"/>
+    <PackageVersion Include="TUnit" Version="1.5.48"/>
     <PackageVersion Include="Verify.TUnit" Version="31.8.0" />
-    <PackageVersion Include="TUnit.Playwright" Version="1.5.1" />
+    <PackageVersion Include="TUnit.Playwright" Version="1.5.48" />
     <PackageVersion Include="Snapshooter.TUnit" Version="1.0.1" />
     <PackageVersion Include="NSwag.AspNetCore" Version="14.6.3" />
     <PackageVersion Include="NSwag.MSBuild" Version="14.6.3" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
-    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="$(MSExtensionsVersion)" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
     <PackageVersion Include="Microsoft.Playwright" Version="1.57.0" />
     <PackageVersion Include="Expressium.LivingDoc.ReqnrollPlugin" Version="1.1.4" />
