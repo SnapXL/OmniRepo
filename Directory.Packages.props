@@ -5,7 +5,7 @@
     <AspireVersion>10.0.0</AspireVersion>
     <AspnetVersion>10.0.1</AspnetVersion>
     <MSExtensionsVersion>10.0.1</MSExtensionsVersion>
-    <SentryVersion>6.0.0-rc.2-prerelease</SentryVersion>
+    <SentryVersion>6.0.0</SentryVersion>
     <OpenTelemetryVersion>1.14.0</OpenTelemetryVersion>
   </PropertyGroup>
   <ItemGroup>
